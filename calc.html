@@ -11,22 +11,23 @@
 </head>
 
 <body>
+
     <div class="container text-center">
         <div class="row">
             <input class="m-3" style="height: 100px;" type="text" id="result" disabled>
             <div class="col-12 justify-content-space-between">
-                <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
-                    data-translate="+">+</button>
+                <button type="button" class="btn btn-outline-primary w-25" data-symbole="symbole"
+                    data-translate="">=</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
                     data-translate="-">-</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
-                    data-translate="/">/</button><br>
+                    data-translate="+">+</button><br>
                 <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
-                    data-translate=",">,</button>
+                    data-translate="">C</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
-                    data-translate="X">X</button>
+                    data-translate="*">*</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-symbole="symbole"
-                    data-translate="">C</button><br>
+                    data-translate=".">,</button><br>
                 <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
                     data-translate="9">9</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
@@ -46,11 +47,11 @@
                 <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
                     data-translate="1">1</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
-                    data-translate="">%</button>
+                    data-translate="%">%</button>
                 <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
                     data-translate="0">0</button>
-                <button type="button" class="btn btn-outline-primary w-25" data-button="chiffre"
-                    data-translate="=">=</button>
+                <button type="button" class="btn btn-outline-secondary w-25" data-button="chiffre"
+                    data-translate="/">/</button>
             </div>
         </div>
     </div>
@@ -59,16 +60,24 @@
         const chiffreButton = document.querySelectorAll('button[data-button="chiffre"]')
         const symboleButton = document.querySelectorAll('button[data-symbole="symbole"]')
 
+        symboleButton[3].addEventListener('click', function () {
+            document.location.reload();
+        });
+
         chiffreButton.forEach(element => {
             element.addEventListener('click', function () {
                 result.value += this.dataset.translate
             })
+            symboleButton[0].addEventListener('click', function () {
+                result.value = eval(result.value);
+            });
         });
         symboleButton.forEach(element => {
             element.addEventListener('click', function () {
                 result.value += this.dataset.translate
             })
         });
+
 
 
     </script>
